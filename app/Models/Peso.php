@@ -15,5 +15,6 @@ class Peso extends Model
     protected $fillable = [
         'item',
         'peso',
+        'tipo_peso',
     ];
 }

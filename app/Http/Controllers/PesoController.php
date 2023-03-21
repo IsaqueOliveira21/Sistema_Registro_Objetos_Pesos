@@ -79,7 +79,7 @@ class PesoController extends Controller
      */
     public function edit(Peso $peso)
     {
-        //
+        return view('itens.dados', compact('peso'));
     }
 
     /**
@@ -89,19 +89,22 @@ class PesoController extends Controller
      * @param  \App\Models\Peso  $peso
      * @return Response
      */
-    public function update(Request $request, Peso $peso)
+    public function update(Peso $peso, Request $request)
     {
-        //
+        $input = $request->validate([
+            'item' => 'required|string',
+            'peso' => 'required|numeric',
+            'tipo_peso' => 'required|string',
+        ]);
+
+        $peso = $this->service->update($peso, $input);
+        $pesoAtualizado = new PesoResource($peso);
+        return redirect()->route('pesos.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Peso  $peso
-     * @return Response
-     */
     public function destroy(Peso $peso)
     {
-        //
+        $this->service->destroy($peso);
+        return redirect()->back();
     }
 }

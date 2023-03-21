@@ -16,6 +16,8 @@
                                 <th scope="col" class="text-center">Peso</th>
                                 <th scope="col" class="text-center">Medida</th>
                                 <th scope="col" class="text-center">Nº Registro</th>
+                                <th scope="col" class="text-center">-</th>
+                                <th scope="col" class="text-center">-</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -26,6 +28,12 @@
                                     <td class="text-center">{{ $item->peso }}</td>
                                     <td class="text-center">{{ $item->tipo_peso }}</td>
                                     <td class="text-center">{{ $item->id }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('pesos.edit', $item) }}" class="btn btn-warning" role="button">Editar</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ route('pesos.destroy', $item) }}" class="btn btn-danger" role="button">Excluir</a>
+                                    </td>
                                 </tr>
                                 @empty
                                     <tr>

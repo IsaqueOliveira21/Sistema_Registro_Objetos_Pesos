@@ -24,4 +24,21 @@ class PesoService
             dd($e->getMessage(), $e->getLine());
         }
     }
+    public function update(Peso $peso, array $input) {
+        try {
+            $peso->fill($input);
+            $peso->save();
+            return $peso;
+        } catch(\Exception $e) {
+            dd($e->getMessage(), $e->getLine());
+        }
+    }
+
+    public function destroy(Peso $peso) {
+        try {
+            $peso->delete();
+        } catch (\Exception $e) {
+            dd($e->getMessage(), $e->getLine());
+        }
+    }
 }

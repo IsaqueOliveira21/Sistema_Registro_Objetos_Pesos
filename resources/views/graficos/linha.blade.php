@@ -39,9 +39,11 @@
             {
             name: 'Quantidade',
             data: [
+            @if(isset($graficos[0]['grafico1']))
                 @foreach($graficos[0]['grafico1'] as $chave => $valor)
                     {{$valor}},
                 @endforeach
+            @endif
             ]
             },
         ],

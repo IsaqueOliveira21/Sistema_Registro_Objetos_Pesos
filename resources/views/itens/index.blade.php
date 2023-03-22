@@ -32,12 +32,16 @@
                                         <a href="{{ route('pesos.edit', $item) }}" class="btn btn-warning" role="button">Editar</a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('pesos.destroy', $item) }}" class="btn btn-danger" role="button">Excluir</a>
+                                        <form action="{{ route('pesos.destroy', $item) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-center" colspan="4">Nenhum item registrado</td>
+                                        <td class="text-center" colspan="7">Nenhum item registrado</td>
                                     </tr>
                             @endforelse
                             </tbody>

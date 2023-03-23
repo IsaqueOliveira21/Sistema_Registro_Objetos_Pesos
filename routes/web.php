@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 Route::prefix('admin')->middleware('auth')->group(function () {
-   Route::resource('pesos', 'App\Http\Controllers\PesoController');
+   Route::resource('pesos', 'App\Http\Controllers\PesoController')->middleware('verified');
 });
